@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EduTech - Personalized Learning</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-logo">
+        🎓 EduTech
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#dashboard">
+            Dashboard
+        </a>
+
+        <a href="#profile">
+            Profile
+        </a>
+
+        <a href="#skills-section">
+            Skill Gap
+        </a>
+
+        <a href="#quiz-section">
+            Quiz
+        </a>
+
+        <a href="#tutor-section">
+            AI Tutor
+        </a>
+
+        <button onclick="logout()"
+                class="logout-btn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero"
+         id="dashboard">
+
+    <div>
+
+        <h1 id="dashboardTitle">
+            Welcome to EduTech! 👋
+        </h1>
+
+        <p>
+            Your personalized education and career
+            guidance platform.
+        </p>
+
+        <button
+            onclick="scrollToSection('profile')"
+            class="primary-btn">
+
+            Complete Profile
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DASHBOARD STATS
+===================================================== -->
+
+<section class="section">
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <span>🎯</span>
+
+            <h3>Skill Progress</h3>
+
+            <strong id="progressStat">
+                0%
+            </strong>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span>💡</span>
+
+            <h3>Skills Matched</h3>
+
+            <strong id="skillsStat">
+                0/0
+            </strong>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span>📝</span>
+
+            <h3>Quiz Level</h3>
+
+            <strong id="quizStat">
+                Not Attempted
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section class="section"
+         id="profile">
+
+    <div class="section-title">
+
+        <h2>👤 Student Profile</h2>
+
+        <p>
+            Tell EduTech about yourself to get
+            personalized recommendations.
+        </p>
+
+    </div>
+
+    <div class="profile-card">
+
+        <div class="form-group">
+
+            <label>Name</label>
+
+            <input
+                id="studentName"
+                type="text"
+                placeholder="Your name"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Education Level</label>
+
+            <select id="educationLevel">
+
+                <option value="">
+                    Select education
+                </option>
+
+                <option value="School Student">
+                    School Student
+                </option>
+
+                <option value="12th Student">
+                    12th Student
+                </option>
+
+                <option value="College Student">
+                    College Student
+                </option>
+
+                <option value="B.Tech Student">
+                    B.Tech Student
+                </option>
+
+                <option value="Graduate">
+                    Graduate
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Career Goal</label>
+
+            <select id="profileCareer">
+
+                <option value="">
+                    Select career
+                </option>
+
+                <option value="AI/ML Engineer">
+                    AI/ML Engineer
+                </option>
+
+                <option value="Data Scientist">
+                    Data Scientist
+                </option>
+
+                <option value="Web Developer">
+                    Web Developer
+                </option>
+
+                <option value="Software Developer">
+                    Software Developer
+                </option>
+
+                <option value="Cybersecurity Analyst">
+                    Cybersecurity Analyst
+                </option>
+
+                <option value="Cloud Engineer">
+                    Cloud Engineer
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Current Skills</label>
+
+            <input
+                id="profileSkills"
+                type="text"
+                placeholder="Python, HTML, CSS"
+            >
+
+            <small>
+                Separate skills using commas.
+            </small>
+
+        </div>
+
+        <button
+            onclick="saveProfile()"
+            class="primary-btn">
+
+            Save Profile & Analyze
+
+        </button>
+
+    </div>
+
+    <div id="profileWelcome"
+         class="welcome-card hidden">
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SKILL GAP
+===================================================== -->
+
+<section class="section"
+         id="skills-section">
+
+    <div class="section-title">
+
+        <h2>🎯 Skill Gap Analysis</h2>
+
+        <p>
+            Discover which skills you need for
+            your dream career.
+        </p>
+
+    </div>
+
+    <div class="analysis-card">
+
+        <input
+            id="skills"
+            type="text"
+            placeholder="Python, HTML, CSS"
+        >
+
+        <select id="career">
+
+            <option value="">
+                Select Career
+            </option>
+
+            <option value="AI/ML Engineer">
+                AI/ML Engineer
+            </option>
+
+            <option value="Data Scientist">
+                Data Scientist
+            </option>
+
+            <option value="Web Developer">
+                Web Developer
+            </option>
+
+            <option value="Software Developer">
+                Software Developer
+            </option>
+
+            <option value="Cybersecurity Analyst">
+                Cybersecurity Analyst
+            </option>
+
+            <option value="Cloud Engineer">
+                Cloud Engineer
+            </option>
+
+        </select>
+
+        <button
+            onclick="analyzeSkills()"
+            class="primary-btn">
+
+            Analyze Skills
+
+        </button>
+
+    </div>
+
+
+    <div id="skillResult"
+         class="result-card hidden">
+
+        <h2 id="careerTitle">
+            Career
+        </h2>
+
+        <div class="progress-circle">
+
+            <span id="progressNumber">
+                0%
+            </span>
+
+        </div>
+
+        <h3>
+            Matched Skills
+        </h3>
+
+        <div id="matchedSkills"
+             class="skills-container">
+        </div>
+
+        <h3>
+            Skills to Learn
+        </h3>
+
+        <div id="missingSkills"
+             class="skills-container">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ROADMAP
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>🗺️ Personalized Roadmap</h2>
+
+        <p>
+            Your recommended learning journey.
+        </p>
+
+    </div>
+
+    <div id="roadmapContainer"
+         class="roadmap">
+
+        <div class="roadmap-item">
+
+            <div class="step">
+                🚀
+            </div>
+
+            <div>
+
+                <h3>
+                    Complete your profile
+                </h3>
+
+                <p>
+                    Your personalized roadmap will
+                    appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="section"
+         id="quiz-section">
+
+    <div class="section-title">
+
+        <h2>📝 Learning Assessment</h2>
+
+        <p>
+            Test your basic technology knowledge.
+        </p>
+
+    </div>
+
+    <div class="quiz-card">
+
+        <div class="question">
+
+            <h3>
+                1. Which language is widely used in AI/ML?
+            </h3>
+
+            <label>
+                <input type="radio"
+                       name="q1"
+                       value="python">
+                Python
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q1"
+                       value="html">
+                HTML
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q1"
+                       value="css">
+                CSS
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                2. Machine Learning primarily learns from?
+            </h3>
+
+            <label>
+                <input type="radio"
+                       name="q2"
+                       value="machine-learning">
+                Data
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q2"
+                       value="html">
+                Web pages
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q2"
+                       value="css">
+                Colors
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                3. Which technology creates webpage structure?
+            </h3>
+
+            <label>
+                <input type="radio"
+                       name="q3"
+                       value="html">
+                HTML
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q3"
+                       value="python">
+                Python
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q3"
+                       value="sql">
+                SQL
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                4. Data is important for?
+            </h3>
+
+            <label>
+                <input type="radio"
+                       name="q4"
+                       value="data">
+                Machine Learning
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q4"
+                       value="music">
+                Music only
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q4"
+                       value="none">
+                Nothing
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                5. What helps solve a problem efficiently?
+            </h3>
+
+            <label>
+                <input type="radio"
+                       name="q5"
+                       value="algorithm">
+                Algorithm
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q5"
+                       value="image">
+                Image
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="q5"
+                       value="color">
+                Color
+            </label>
+
+        </div>
+
+
+        <button
+            onclick="submitQuiz()"
+            class="primary-btn">
+
+            Submit Quiz
+
+        </button>
+
+    </div>
+
+
+    <div id="quizResult"
+         class="result-card hidden">
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AI TUTOR
+===================================================== -->
+
+<section class="section"
+         id="tutor-section">
+
+    <div class="section-title">
+
+        <h2>🤖 AI Tutor</h2>
+
+        <p>
+            Ask questions and get personalized
+            learning guidance.
+        </p>
+
+    </div>
+
+
+    <div class="tutor-card">
+
+        <div class="learning-modes">
+
+            <button
+                class="mode-btn active"
+                onclick="selectLearningMode('Beginner', this)">
+
+                Beginner
+
+            </button>
+
+            <button
+                class="mode-btn"
+                onclick="selectLearningMode('Intermediate', this)">
+
+                Intermediate
+
+            </button>
+
+            <button
+                class="mode-btn"
+                onclick="selectLearningMode('Advanced', this)">
+
+                Advanced
+
+            </button>
+
+        </div>
+
+
+        <p id="currentLearningMode"
+           class="current-mode">
+
+            ● Beginner Mode
+
+        </p>
+
+
+        <div id="chatMessages"
+             class="chat-messages">
+
+            <div class="bot-message">
+
+                👋 Welcome to EduTech AI Tutor!
+
+                <br><br>
+
+                Complete your profile and ask me
+                any learning question.
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input">
+
+            <input
+                id="userQuestion"
+                type="text"
+                placeholder="Ask your learning question..."
+                onkeydown="handleEnter(event)"
+            >
+
+            <button onclick="askTutor()">
+
+                Send
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 EduTech | Personalized Education
+        Through Technology
+    </p>
+
+</footer>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
